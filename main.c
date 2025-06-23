@@ -12,7 +12,7 @@ int main() {
         printf("\n--- MENU DE OPCOES ---\n"
             " 1 - Cadastrar Doadores\n"
             " 2 - Consultar Doadores\n "
-            " 3 - Atualizar Info\n"
+            "3 - Atualizar Info\n"
             " 4 - Top 10 Doadores\n"
             " 5 - Remover Doador\n"
             " 0 - ENCERRAR PROGRAMA\n"
@@ -24,7 +24,7 @@ int main() {
 
         switch (opcaoUsuario[0]) {
 
-            case '1': printf(">> Chamando funcao: Cadastrar Doador\n");break;
+            case '1': printf(">> Chamando funcao: Cadastrar Doador\n");cadastrarUser();break;;
             case '2': printf(">> Chamando funcao: Consultar Doadores\n");break;
             case '3': printf(">> Chamando funcao: Atualizar Informacoes\n");break;
             case '4': printf(">> Chamando funcao: Top 10 Doadores\n");break;

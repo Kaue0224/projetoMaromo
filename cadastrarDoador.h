@@ -2,6 +2,7 @@
 #include <string.h>
 #include "tratamentoentrada.h"
 
+
 typedef struct {
   char nome[100];
   char email[100];
@@ -10,23 +11,62 @@ typedef struct {
   char data_ultima_doacao[11];
 } Doador;
 
+void removerBarraNcsv(Doador *doador) {
 
-void cadastrarUser(Doador *doador) {
-    printf("digite o nome do doador: ");
-    fgets(doador->nome, sizeof(doador->nome), stdin);
+    doador->nome[strcspn(doador->nome, "\n")] = '\0';
+    doador->email[strcspn(doador->email, "\n")] = '\0';
+    doador->telefone[strcspn(doador->telefone, "\n")] = '\0';
+    doador->data_ultima_doacao[strcspn(doador->data_ultima_doacao, "\n")] = '\0';
 
-    printf("digite o email do doador: ");
-    fgets(doador->email, sizeof(doador->email), stdin);
 
-    printf("digite o telefone do doador: ");
-    fgets(doador->telefone, sizeof(doador->telefone), stdin);
+}
 
-    printf("digite o valor da doacao: ");
-    scanf("%lf", &doador->valor_doacao);
-    apagarfila(); // para limpar o '\n' deixado no buffer
 
-    printf("digite a data da ultima doacao: ");
-    fgets(doador->data_ultima_doacao, sizeof(doador->data_ultima_doacao), stdin);
+void cadastrarUser(){
+
+    Doador doador;
+
+    printf("\ndigite o nome do doador: ");
+    fgets(doador.nome, sizeof(doador.nome), stdin);
+    verificarfilastdin(doador.nome);
+
+    printf("\ndigite o email do doador: ");
+    fgets(doador.email, sizeof(doador.email), stdin);
+    verificarfilastdin(doador.email);
+
+    printf("\ndigite o telefone do doador: ");
+    fgets(doador.telefone, sizeof(doador.telefone), stdin);
+    verificarfilastdin(doador.telefone);
+
+    printf("\ndigite o valor da doacao: ");
+    scanf("%lf", &doador.valor_doacao);
+    apagarfila();
+
+    printf("\ndigite a data da ultima doacao: ");
+    fgets(doador.data_ultima_doacao, sizeof(doador.data_ultima_doacao), stdin);
+    verificarfilastdin(doador.data_ultima_doacao);
+
+    FILE *fptr;
+
+    fptr = fopen("C:/Users/kaued/CLionProjects/projetoMaromo/doadores.csv", "a");
+    if(fptr == NULL) {
+        printf("erro ao abrir");
+        return;
+    }
+
+    removerBarraNcsv(&doador);
+
+    fprintf(fptr, "\"%s\",%s,%s,%0.5lf,%s\n",
+        doador.nome,
+        doador.email,
+        doador.telefone,
+        doador.valor_doacao,
+        doador.data_ultima_doacao
+
+    );
+
+    fclose(fptr);
+    printf("Doador cadastrado com sucesso!\n");
 }
 
 
