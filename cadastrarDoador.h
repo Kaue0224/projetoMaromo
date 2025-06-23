@@ -11,24 +11,24 @@ typedef struct {
 } Doador;
 
 
-void cadastrarUser(Doador doador) {
-
+void cadastrarUser(Doador *doador) {
     printf("digite o nome do doador: ");
-    fgets(doador.nome,sizeof(doador.nome),stdin);
+    fgets(doador->nome, sizeof(doador->nome), stdin);
 
     printf("digite o email do doador: ");
-    fgets(doador.email,sizeof(doador.email),stdin);
+    fgets(doador->email, sizeof(doador->email), stdin);
 
     printf("digite o telefone do doador: ");
-    fgets(doador.telefone,sizeof(doador.telefone),stdin);
+    fgets(doador->telefone, sizeof(doador->telefone), stdin);
 
     printf("digite o valor da doacao: ");
-    scanf("%f",&doador.valor_doacao);
+    scanf("%lf", &doador->valor_doacao);
+    apagarfila(); // para limpar o '\n' deixado no buffer
 
     printf("digite a data da ultima doacao: ");
-    fgets(doador.data_ultima_doacao,sizeof(doador.data_ultima_doacao),stdin);
-
+    fgets(doador->data_ultima_doacao, sizeof(doador->data_ultima_doacao), stdin);
 }
+
 
 
 void editarUser(Doador doador){}
