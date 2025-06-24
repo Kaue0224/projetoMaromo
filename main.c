@@ -25,7 +25,7 @@ int main() {
         switch (opcaoUsuario[0]) {
 
             case '1': printf(">> Chamando funcao: Cadastrar Doador\n");cadastrarUser();break;;
-            case '2': printf(">> Chamando funcao: Consultar Doadores\n");break;
+            case '2': printf(">> Chamando funcao: Consultar Doadores\n");pesquisarUser();break;
             case '3': printf(">> Chamando funcao: Atualizar Informacoes\n");break;
             case '4': printf(">> Chamando funcao: Top 10 Doadores\n");break;
             case '5': printf(">> Chamando funcao: Remover Doador\n");break;

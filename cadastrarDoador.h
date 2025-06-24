@@ -73,28 +73,61 @@ void cadastrarUser(){
 
 void editarUser(Doador doador){}
 
+
 void pesquisarUser() {
+    char emailBusca[100];
 
-    char opcaoUsuario[10];
+    printf("\n=== PESQUISA DE DOADOR POR EMAIL ===\n");
+    printf("Digite o email para pesquisa: ");
+    fgets(emailBusca, sizeof(emailBusca), stdin);
+    verificarfilastdin(emailBusca);
+    emailBusca[strcspn(emailBusca, "\n")] = '\0';
 
-    do {
+    FILE *fptr = fopen("C:/Users/kaued/CLionProjects/projetoMaromo/doadores.csv", "r");
+    if (fptr == NULL) {
+        perror("Erro ao abrir doadores.csv");
+        return;
+    }
 
-        printf("\n--- MENU ---\n"
-                     " 1 - pesquisar por id\n"
-                     " 2 - pesquisar por email\n"
-        );
-        fgets(opcaoUsuario,sizeof(opcaoUsuario), stdin);
-        verificarfilastdin(opcaoUsuario);
+    char linha[512];
+    int encontrou = 0;
+    int linhaAtual = 0;
 
+    while (fgets(linha, sizeof(linha), fptr)) {
+        linhaAtual++;
 
-        switch (opcaoUsuario[0]) {
-            case '1': printf("pesquisar por id"); break;
-            case '2': printf("pesquisar por email: "); break;
-            default: printf(">> Opcao invalida! Por favor, digite um numero entre 0 e 5.\n");break;
+        if (linhaAtual == 1) continue; // pula o cabeçalho
 
+        // quebra a linha
+        char *nome = strtok(linha, ",");
+        char *email = strtok(NULL, ",");
+        char *telefone = strtok(NULL, ",");
+        char *valor = strtok(NULL, ",");
+        char *data = strtok(NULL, "\n");
+
+        // remove aspas iniciais e finais do nome
+        if (nome && nome[0] == '"') {
+            nome++; // pula aspas inicial
+            char *aspasFinal = strrchr(nome, '"');
+            if (aspasFinal) *aspasFinal = '\0'; // remove aspas final
         }
-    } while (opcaoUsuario != 0);
 
+        if (email != NULL && strcmp(emailBusca, email) == 0) {
+            printf("\n--- DOADOR ENCONTRADO ---\n");
+            printf("Nome: %s\n", nome);
+            printf("Email: %s\n", email);
+            printf("Telefone: %s\n", telefone);
+            printf("Valor da doacao: %s\n", valor);
+            printf("Data da ultima doacao: %s\n", data);
+            encontrou = 1;
+            break;
+        }
+    }
 
+    if (!encontrou) {
+        printf("\nNenhum doador com esse email foi encontrado.\n");
+    }
 
+    fclose(fptr);
 }
+
