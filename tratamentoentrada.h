@@ -4,5 +4,9 @@
 void limparTela();
 void apagarfila();
 void verificarfilastdin(char *entrada);
+int verificarEmail(char email[]);
+int verificarTelefone(char telefone[]);
+int validardata(char data[]);
+
 
 #endif

@@ -28,7 +28,7 @@ int main() {
             case '2': printf(">> Chamando funcao: Consultar Doadores\n");pesquisarUser();break;
             case '3': printf(">> Chamando funcao: Atualizar Informacoes\n");break;
             case '4': printf(">> Chamando funcao: Top 10 Doadores\n");break;
-            case '5': printf(">> Chamando funcao: Remover Doador\n");break;
+            case '5': printf(">> Chamando funcao: Remover Doador\n");removerUser();break;
             case '0': printf(">> Voce escolheu ENCERRAR o programa. Saindo...\n");break;
             default: printf(">> Opcao invalida! Por favor, digite um numero entre 0 e 5.\n");break;
 
