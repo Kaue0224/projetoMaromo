@@ -7,6 +7,6 @@ void verificarfilastdin(char *entrada);
 int verificarEmail(char email[]);
 int verificarTelefone(char telefone[]);
 int validardata(char data[]);
-
+void listarTopDoadores();
 
 #endif

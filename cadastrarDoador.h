@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
-
+#include <stdlib.h>
+#define MAX_DOADORES 500
 #include "tratamentoentrada.h"
 #include "tratamentoentrada.h"
 #include "tratamentoentrada.h"
@@ -62,7 +63,7 @@ void cadastrarUser() {
 
     FILE *fptr;
 
-    fptr = fopen("C:/Users/kaued/CLionProjects/projetoMaromo/doadores.csv", "a");
+    fptr = fopen("doadores.csv", "a");
     if(fptr == NULL) {
         printf("erro ao abrir");
         return;
@@ -97,9 +98,9 @@ void pesquisarUser() {
     verificarfilastdin(emailBusca);
     emailBusca[strcspn(emailBusca, "\n")] = '\0';
 
-    FILE *fptr = fopen("C:/Users/kaued/CLionProjects/projetoMaromo/doadores.csv", "r");
+    FILE *fptr = fopen("doadores.csv", "r");
     if (fptr == NULL) {
-        perror("Erro ao abrir doadores.csv");
+        perror("erro ao abrir doadores.csv");
         return;
     }
 
@@ -153,7 +154,7 @@ void removerUser() {
     verificarfilastdin(emailBusca);
     emailBusca[strcspn(emailBusca, "\n")] = '\0';  // Remove \n
 
-    FILE *fptr = fopen("C:/Users/kaued/CLionProjects/projetoMaromo/doadores.csv", "r");
+    FILE *fptr = fopen("doadores.csv", "r");
     if (fptr == NULL) {
         perror("Erro ao abrir doadores.csv");
         return;
@@ -204,8 +205,8 @@ void removerUser() {
     }
 
     // Se confirmou, faz a remoção
-    fptr = fopen("C:/Users/kaued/CLionProjects/projetoMaromo/doadores.csv", "r");
-    FILE *temp = fopen("C:/Users/kaued/CLionProjects/projetoMaromo/doadores_temp.csv", "w");
+    fptr = fopen("doadores.csv", "r");
+    FILE *temp = fopen("doadores.csv", "w");
     if (fptr == NULL || temp == NULL) {
         perror("Erro ao abrir arquivos");
         if (fptr) fclose(fptr);
@@ -243,18 +244,81 @@ void removerUser() {
     fclose(temp);
 
     if (removido) {
-        if (remove("C:/Users/kaued/CLionProjects/projetoMaromo/doadores.csv") != 0) {
+        if (remove("doadores.csv") != 0) {
             perror("Erro ao remover arquivo original");
             return;
         }
-        if (rename("C:/Users/kaued/CLionProjects/projetoMaromo/doadores_temp.csv", "C:/Users/kaued/CLionProjects/projetoMaromo/doadores.csv") != 0) {
+        if (rename("doadores.csv", "doadores.csv") != 0) {
             perror("Erro ao renomear arquivo temporario");
             return;
         }
         printf("Doador removido com sucesso!\n");
     } else {
         printf("Erro: doador nao removido.\n");
-        remove("C:/Users/kaued/CLionProjects/projetoMaromo/doadores_temp.csv");
+        remove("doadores.csv");
     }
 }
 
+int processarLinhaCSV(char *linha, Doador *doador) {
+
+    linha[strcspn(linha, "\n")] = 0;
+
+
+    if (sscanf(linha, "%99[^,],%99[^,],%19[^,],%lf,%10[^,]",
+               doador->nome, doador->email, doador->telefone,
+               &doador->valor_doacao, doador->data_ultima_doacao) != 5) {
+        return 0;
+               }
+    return 1;
+}
+
+int compararDoadores(const void *a, const void *b) {
+    Doador *doadorA = (Doador *)a;
+    Doador *doadorB = (Doador *)b;
+
+    if (doadorA->valor_doacao < doadorB->valor_doacao) {
+        return 1;
+    } else if (doadorA->valor_doacao > doadorB->valor_doacao) {
+        return -1;
+    } else {
+        return 0;
+    }
+}
+
+void listarTopDoadores() {
+    limparTela();
+    printf("\nTOP 10 DOADORES \n");
+    FILE *arquivo = fopen("doadores.csv", "r");
+    if (arquivo == NULL) {
+        perror(" Erro ao abrir");
+        return;
+    }
+
+    Doador todosOsDoadores[MAX_DOADORES];
+    int numDoadores = 0;
+    char  linha [256];
+
+    fgets(linha, sizeof(linha), arquivo);
+
+    while (fgets(linha, sizeof(linha), arquivo) != NULL && numDoadores < MAX_DOADORES) {
+        if (processarLinhaCSV(linha, &todosOsDoadores[numDoadores])) {
+            numDoadores++;
+        }
+    }
+fclose(arquivo);
+
+    if (numDoadores == 0) {
+        printf("nenhum doador cadastrado");
+        return;
+    }
+
+    qsort(todosOsDoadores, numDoadores, sizeof(Doador), compararDoadores);
+
+    printf("%-4s %-30s %s\n", "posicao", "Nome do Doador", "Valor Doado");
+
+    int limite = (numDoadores < 10)? numDoadores : 10;
+
+    for (int i = 0; i < limite; i++) {
+        printf("#%-3d %-30s R$ %9.2f\n", i + 1, todosOsDoadores[i].nome, todosOsDoadores[i].valor_doacao);
+    }
+}
