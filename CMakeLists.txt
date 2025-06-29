@@ -6,4 +6,5 @@ set(CMAKE_C_STANDARD 11)
 add_executable(projetoMaromo main.c
         tratamentoentrada.h
         tratamentoentrada.c
+        cadastrarDoador.h
 )
