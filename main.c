@@ -26,7 +26,7 @@ int main() {
 
             case '1': printf(">> Chamando funcao: Cadastrar Doador\n");cadastrarUser();break;;
             case '2': printf(">> Chamando funcao: Consultar Doadores\n");pesquisarUser();break;
-            case '3': printf(">> Chamando funcao: Atualizar Informacoes\n");break;
+            case '3': printf(">> Chamando funcao: Atualizar Informacoes\n"); atualizarInformacoes();break;
             case '4': printf(">> Chamando funcao: Top 10 Doadores\n");listarTopDoadores();break;
             case '5': printf(">> Chamando funcao: Remover Doador\n");removerUser();break;
             case '0': printf(">> Voce escolheu ENCERRAR o programa. Saindo...\n");break;

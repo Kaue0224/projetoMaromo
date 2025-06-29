@@ -8,21 +8,18 @@
 
 
 typedef struct {
-  char nome[100];
-  char email[100];
-  char telefone[11];
-  double valor_doacao;
-  char data_ultima_doacao[11];
+    char nome[100];
+    char email[100];
+    char telefone[11];
+    double valor_doacao;
+    char data_ultima_doacao[11];
 } Doador;
 
 void removerBarraNcsv(Doador *doador) {
-
     doador->nome[strcspn(doador->nome, "\n")] = '\0';
     doador->email[strcspn(doador->email, "\n")] = '\0';
     doador->telefone[strcspn(doador->telefone, "\n")] = '\0';
     doador->data_ultima_doacao[strcspn(doador->data_ultima_doacao, "\n")] = '\0';
-
-
 }
 
 
@@ -35,19 +32,19 @@ void cadastrarUser() {
         printf("\ndigite o nome do doador: ");
         fgets(doador.nome, sizeof(doador.nome), stdin);
         verificarfilastdin(doador.nome);
-    }while (strlen(doador.nome) < 5 );
+    } while (strlen(doador.nome) < 5);
 
     do {
         printf("\ndigite o email do doador: ");
         fgets(doador.email, sizeof(doador.email), stdin);
         verificarfilastdin(doador.email);
-    }while(verificarEmail(doador.email) == 0 );
+    } while (verificarEmail(doador.email) == 0);
 
     do {
         printf("\ndigite o telefone do doador: ");
         fgets(doador.telefone, sizeof(doador.telefone), stdin);
         verificarfilastdin(doador.telefone);
-    }while (verificarTelefone(doador.telefone) == 0);
+    } while (verificarTelefone(doador.telefone) == 0);
 
     printf("\ndigite o valor da doacao: ");
     scanf("%lf", &doador.valor_doacao);
@@ -57,14 +54,13 @@ void cadastrarUser() {
         printf("\ndigite a data da ultima doacao: ");
         fgets(doador.data_ultima_doacao, sizeof(doador.data_ultima_doacao), stdin);
         verificarfilastdin(doador.data_ultima_doacao);
-    }while(validardata(doador.data_ultima_doacao) == 0);
-
+    } while (validardata(doador.data_ultima_doacao) == 0);
 
 
     FILE *fptr;
 
     fptr = fopen("doadores.csv", "a");
-    if(fptr == NULL) {
+    if (fptr == NULL) {
         printf("erro ao abrir");
         return;
     }
@@ -72,11 +68,11 @@ void cadastrarUser() {
     removerBarraNcsv(&doador);
 
     fprintf(fptr, "\"%s\",%s,%s,%0.5lf,%s\n",
-        doador.nome,
-        doador.email,
-        doador.telefone,
-        doador.valor_doacao,
-        doador.data_ultima_doacao
+            doador.nome,
+            doador.email,
+            doador.telefone,
+            doador.valor_doacao,
+            doador.data_ultima_doacao
 
     );
 
@@ -85,8 +81,8 @@ void cadastrarUser() {
 }
 
 
-
-void editarUser(Doador doador){}
+void editarUser(Doador doador) {
+}
 
 
 void pesquisarUser() {
@@ -152,7 +148,7 @@ void removerUser() {
     printf("Digite o email do doador a remover: ");
     fgets(emailBusca, sizeof(emailBusca), stdin);
     verificarfilastdin(emailBusca);
-    emailBusca[strcspn(emailBusca, "\n")] = '\0';  // Remove \n
+    emailBusca[strcspn(emailBusca, "\n")] = '\0'; // Remove \n
 
     FILE *fptr = fopen("doadores.csv", "r");
     if (fptr == NULL) {
@@ -260,7 +256,6 @@ void removerUser() {
 }
 
 int processarLinhaCSV(char *linha, Doador *doador) {
-
     linha[strcspn(linha, "\n")] = 0;
 
 
@@ -268,13 +263,13 @@ int processarLinhaCSV(char *linha, Doador *doador) {
                doador->nome, doador->email, doador->telefone,
                &doador->valor_doacao, doador->data_ultima_doacao) != 5) {
         return 0;
-               }
+    }
     return 1;
 }
 
 int compararDoadores(const void *a, const void *b) {
-    Doador *doadorA = (Doador *)a;
-    Doador *doadorB = (Doador *)b;
+    Doador *doadorA = (Doador *) a;
+    Doador *doadorB = (Doador *) b;
 
     if (doadorA->valor_doacao < doadorB->valor_doacao) {
         return 1;
@@ -296,7 +291,7 @@ void listarTopDoadores() {
 
     Doador todosOsDoadores[MAX_DOADORES];
     int numDoadores = 0;
-    char  linha [256];
+    char linha[256];
 
     fgets(linha, sizeof(linha), arquivo);
 
@@ -305,7 +300,7 @@ void listarTopDoadores() {
             numDoadores++;
         }
     }
-fclose(arquivo);
+    fclose(arquivo);
 
     if (numDoadores == 0) {
         printf("nenhum doador cadastrado");
@@ -316,9 +311,113 @@ fclose(arquivo);
 
     printf("%-4s %-30s %s\n", "posicao", "Nome do Doador", "Valor Doado");
 
-    int limite = (numDoadores < 10)? numDoadores : 10;
+    int limite = (numDoadores < 10) ? numDoadores : 10;
 
     for (int i = 0; i < limite; i++) {
         printf("#%-3d %-30s R$ %9.2f\n", i + 1, todosOsDoadores[i].nome, todosOsDoadores[i].valor_doacao);
     }
+}
+
+void atualizarInformacoes() {
+    char email_pesquisa[100];
+    Doador doadorParaAtualizar;
+    int encontrado = 0;
+
+    limparTela();
+    printf("atualizar doadores\n");
+    printf("Digite o e-mail do doador que deseja atualizar: ");
+    fgets(email_pesquisa, sizeof(email_pesquisa), stdin);
+    email_pesquisa[strcspn(email_pesquisa, "\n")] = 0;
+
+    // --- PARTE 1: BUSCAR O DOADOR (Esta parte está OK) ---
+    FILE *arquivo_leitura = fopen("doadores.csv", "r");
+    if (arquivo_leitura == NULL) {
+        perror("Erro ao abrir 'doadores.csv'");
+        return;
+    }
+
+    char linha[512];
+    while (fgets(linha, sizeof(linha), arquivo_leitura) != NULL) {
+        if (processarLinhaCSV(linha, &doadorParaAtualizar) == 1) {
+            if (strcmp(doadorParaAtualizar.email, email_pesquisa) == 0) {
+                encontrado = 1;
+                break;
+            }
+        }
+    }
+    fclose(arquivo_leitura);
+
+    if (!encontrado) {
+        printf("nenhum doador com o e-mail '%s' foi encontrado.\n", email_pesquisa);
+        return;
+    }
+
+
+    printf(" Doador Encontrado! \n");
+    printf("digite as novas informacoes ou pressione enter para manter a atual.\n");
+
+    char nome_novo[100], telefone_novo[20], data_nova[11], valor_novo_str[50];
+    printf("Nome atual: %s\n> Novo nome: ", doadorParaAtualizar.nome);
+    fgets(nome_novo, sizeof(nome_novo), stdin);
+    nome_novo[strcspn(nome_novo, "\n")] = 0;
+
+    printf("Telefone atual: %s\n> Novo telefone: ", doadorParaAtualizar.telefone);
+    fgets(telefone_novo, sizeof(telefone_novo), stdin);
+    telefone_novo[strcspn(telefone_novo, "\n")] = 0;
+
+    printf("Data da doacao atual: %s\n> Nova data (DD/MM/AAAA): ", doadorParaAtualizar.data_ultima_doacao);
+    fgets(data_nova, sizeof(data_nova), stdin);
+    data_nova[strcspn(data_nova, "\n")] = 0;
+
+    printf("Valor da doacao atual: %.2f\n> Novo valor: ", doadorParaAtualizar.valor_doacao);
+    fgets(valor_novo_str, sizeof(valor_novo_str), stdin);
+    valor_novo_str[strcspn(valor_novo_str, "\n")] = 0;
+
+
+    if (strlen(nome_novo) > 0) strcpy(doadorParaAtualizar.nome, nome_novo);
+    if (strlen(telefone_novo) > 0) strcpy(doadorParaAtualizar.telefone, telefone_novo);
+    if (strlen(data_nova) > 0) strcpy(doadorParaAtualizar.data_ultima_doacao, data_nova);
+    if (strlen(valor_novo_str) > 0) doadorParaAtualizar.valor_doacao = atof(valor_novo_str);
+
+
+    FILE *arquivo_origem = fopen("doadores.csv", "r");
+    FILE *arquivo_temp = fopen("temp.csv", "w");
+
+    if (arquivo_origem == NULL || arquivo_temp == NULL) {
+        perror("erro ao criar arquivo temporario");
+        return;
+    }
+
+
+    fgets(linha, sizeof(linha), arquivo_origem);
+    fputs(linha, arquivo_temp);
+
+
+    while (fgets(linha, sizeof(linha), arquivo_origem) != NULL) {
+        char linha_copia[512];
+        strcpy(linha_copia, linha);
+
+        Doador doador_temp;
+
+        if (processarLinhaCSV(linha_copia, &doador_temp) == 1) {
+            if (strcmp(doador_temp.email, email_pesquisa) == 0) {
+                fprintf(arquivo_temp, "%s,%s,%s,%.2f,%s\n",
+                        doadorParaAtualizar.nome, doadorParaAtualizar.email, doadorParaAtualizar.telefone,
+                        doadorParaAtualizar.valor_doacao, doadorParaAtualizar.data_ultima_doacao);
+            } else {
+                fputs(linha, arquivo_temp);
+            }
+        } else {
+            fputs(linha, arquivo_temp);
+        }
+    }
+
+    fclose(arquivo_origem);
+    fclose(arquivo_temp);
+
+
+    remove("doadores.csv");
+    rename("temp.csv", "doadores.csv");
+
+    printf("\n>> Doador atualizado com sucesso! <<\n");
 }
