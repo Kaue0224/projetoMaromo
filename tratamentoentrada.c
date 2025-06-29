@@ -21,14 +21,12 @@ void verificarfilastdin(char *entrada) {
 }
 
 int verificarTelefone(char telefone[]) {
-
-    if(strlen(telefone) < 10 ) {
+    if (strlen(telefone) < 10) {
         printf("digite um numero de telefone valido!");
         return 0;
-    }else if(strlen(telefone) > 9) {
+    } else if (strlen(telefone) > 9) {
         return 1;
     }
-
 }
 
 int verificarEmail(char email[]) {
@@ -106,7 +104,7 @@ int validardata(char data[]) {
     }
 
     // Dias máximos por mês
-    int dias_mes[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+    int dias_mes[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     // Ajusta fevereiro se for bissexto
     if (bissexto(ano)) {
