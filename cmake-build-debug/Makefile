@@ -56,10 +56,10 @@ RM = "C:\Program Files\JetBrains\CLion 2024.2.1\bin\cmake\win\x64\bin\cmake.exe"
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\kaued\CLionProjects\projetoMaromo
+CMAKE_SOURCE_DIR = C:\Users\kaued\CLionProjects\projetofinal\projetoMaromo
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\kaued\CLionProjects\projetoMaromo\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\kaued\CLionProjects\projetofinal\projetoMaromo\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\kaued\CLionProjects\projetoMaromo\cmake-build-debug\CMakeFiles C:\Users\kaued\CLionProjects\projetoMaromo\cmake-build-debug\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\kaued\CLionProjects\projetofinal\projetoMaromo\cmake-build-debug\CMakeFiles C:\Users\kaued\CLionProjects\projetofinal\projetoMaromo\cmake-build-debug\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\kaued\CLionProjects\projetoMaromo\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\kaued\CLionProjects\projetofinal\projetoMaromo\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -127,6 +127,30 @@ projetoMaromo: cmake_check_build_system
 projetoMaromo/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\projetoMaromo.dir\build.make CMakeFiles/projetoMaromo.dir/build
 .PHONY : projetoMaromo/fast
+
+doador.obj: doador.c.obj
+.PHONY : doador.obj
+
+# target to build an object file
+doador.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projetoMaromo.dir\build.make CMakeFiles/projetoMaromo.dir/doador.c.obj
+.PHONY : doador.c.obj
+
+doador.i: doador.c.i
+.PHONY : doador.i
+
+# target to preprocess a source file
+doador.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projetoMaromo.dir\build.make CMakeFiles/projetoMaromo.dir/doador.c.i
+.PHONY : doador.c.i
+
+doador.s: doador.c.s
+.PHONY : doador.s
+
+# target to generate assembly for a file
+doador.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projetoMaromo.dir\build.make CMakeFiles/projetoMaromo.dir/doador.c.s
+.PHONY : doador.c.s
 
 main.obj: main.c.obj
 .PHONY : main.obj
@@ -185,6 +209,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... projetoMaromo
+	@echo ... doador.obj
+	@echo ... doador.i
+	@echo ... doador.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

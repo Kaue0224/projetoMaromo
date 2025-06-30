@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/projetoMaromo.dir/doador.c.obj"
+  "CMakeFiles/projetoMaromo.dir/doador.c.obj.d"
   "CMakeFiles/projetoMaromo.dir/main.c.obj"
   "CMakeFiles/projetoMaromo.dir/main.c.obj.d"
   "CMakeFiles/projetoMaromo.dir/tratamentoentrada.c.obj"

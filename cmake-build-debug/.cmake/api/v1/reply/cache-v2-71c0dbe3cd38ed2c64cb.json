@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/kaued/CLionProjects/projetoMaromo/cmake-build-debug"
+			"value" : "c:/Users/kaued/CLionProjects/projetofinal/projetoMaromo/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -415,7 +415,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/kaued/CLionProjects/projetoMaromo/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/kaued/CLionProjects/projetofinal/projetoMaromo/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -487,7 +487,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/kaued/CLionProjects/projetoMaromo"
+			"value" : "C:/Users/kaued/CLionProjects/projetofinal/projetoMaromo"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1135,7 +1135,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/kaued/CLionProjects/projetoMaromo/cmake-build-debug"
+			"value" : "C:/Users/kaued/CLionProjects/projetofinal/projetoMaromo/cmake-build-debug"
 		},
 		{
 			"name" : "projetoMaromo_IS_TOP_LEVEL",
@@ -1159,7 +1159,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/kaued/CLionProjects/projetoMaromo"
+			"value" : "C:/Users/kaued/CLionProjects/projetofinal/projetoMaromo"
 		}
 	],
 	"kind" : "cache",

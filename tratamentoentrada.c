@@ -20,13 +20,28 @@ void verificarfilastdin(char *entrada) {
     }
 }
 
-int verificarTelefone(char telefone[]) {
-    if (strlen(telefone) < 10) {
-        printf("digite um numero de telefone valido!");
-        return 0;
-    } else if (strlen(telefone) > 9) {
-        return 1;
+int verificarTelefone(char str[]) {
+    int len = strlen(str);
+
+    // Remove o \n se estiver no final
+    if (str[len - 1] == '\n') {
+        str[len - 1] = '\0';
+        len--;
     }
+
+    if (len < 9) {
+        printf("O número deve ter pelo menos 9 dígitos!\n");
+        return 0;
+    }
+
+    for (int i = 0; i < len; i++) {
+        if (str[i] < '0' || str[i] > '9') {
+            printf("O número não pode conter letras ou símbolos!\n");
+            return 0;
+        }
+    }
+
+    return 1; // Somente números e comprimento suficiente
 }
 
 int verificarEmail(char email[]) {

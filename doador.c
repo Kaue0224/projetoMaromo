@@ -13,33 +13,151 @@ void removerBarraNcsv(Doador *doador) {
     doador->data_ultima_doacao[strcspn(doador->data_ultima_doacao, "\n")] = '\0';
 }
 
+int processarLinhaCSV(char *linha, Doador *doador) {
+    linha[strcspn(linha, "\n")] = 0;
+
+
+    if (sscanf(linha, "%99[^,],%99[^,],%19[^,],%lf,%10[^,]",
+               doador->nome, doador->email, doador->telefone,
+               &doador->valor_doacao, doador->data_ultima_doacao) != 5) {
+        return 0;
+               }
+    return 1;
+}
+
+int validarValorDoacao(double *valor) {
+    char buffer[50];
+    char *endptr;
+
+    while (1) {
+        printf("\ndigite o valor da doacao: ");
+        if (fgets(buffer, sizeof(buffer), stdin) == NULL) {
+            printf("Erro na leitura!\n");
+            return 0;
+        }
+        // Tenta converter para double
+        *valor = strtod(buffer, &endptr);
+
+        // Se o endptr não apontar para o fim da string (exceto '\n'), tem caracteres inválidos
+        if (endptr == buffer || (*endptr != '\n' && *endptr != '\0')) {
+            printf("Valor invalido! Digite apenas numeros.\n");
+            continue;
+        }
+        if (*valor < 0) {
+            printf("Valor da doacao nao pode ser negativo.\n");
+            continue;
+        }
+        return 1;
+    }
+}
+
+int emailExiste(const char *email) {
+    FILE *fptr = fopen("doadores.csv", "r");
+    if (fptr == NULL) return 0;
+
+    char linha[512];
+    Doador temp;
+
+    while (fgets(linha, sizeof(linha), fptr)) {
+        if (processarLinhaCSV(linha, &temp)) {
+            if (strcmp(temp.email, email) == 0) {
+                fclose(fptr);
+                return 1; // E-mail já existe
+            }
+        }
+    }
+
+    fclose(fptr);
+    return 0; // Não existe
+}
+
+int telefoneExiste(const char *telefone) {
+    FILE *fptr = fopen("doadores.csv", "r");
+    if (fptr == NULL) return 0;
+
+    char linha[512];
+    Doador temp;
+
+    while (fgets(linha, sizeof(linha), fptr)) {
+        if (processarLinhaCSV(linha, &temp)) {
+            if (strcmp(temp.telefone, telefone) == 0) {
+                fclose(fptr);
+                return 1; // Telefone já existe
+            }
+        }
+    }
+
+    fclose(fptr);
+    return 0; // Não existe
+}
 
 void cadastrarUser() {
     Doador doador;
 
     do {
-        strlen(doador.nome) < 5 ? printf("\ndigite um nome valido!") : 0;
-
         printf("\ndigite o nome do doador: ");
         fgets(doador.nome, sizeof(doador.nome), stdin);
         verificarfilastdin(doador.nome);
+
+        if (strcmp(doador.nome, "cancel\n") == 0) {
+            printf("Cadastro cancelado pelo usuario.\n");
+            return;
+        }
+
+        if (strlen(doador.nome) < 5) {
+            printf("Digite um nome valido!\n");
+        }
     } while (strlen(doador.nome) < 5);
 
     do {
         printf("\ndigite o email do doador: ");
         fgets(doador.email, sizeof(doador.email), stdin);
         verificarfilastdin(doador.email);
-    } while (verificarEmail(doador.email) == 0);
+
+        if (strcmp(doador.email, "cancel\n") == 0) {
+            printf("Cadastro cancelado pelo usuario.\n");
+            return;
+        }
+        if (verificarEmail(doador.email) == 0) {
+            printf("Email invalido!\n");
+            continue;
+        }
+
+        if (emailExiste(doador.email)) {
+            printf("Este email ja esta cadastrado!\n");
+            continue;
+        }
+
+        break; // Email valido e nao existe, sai do loop
+    } while (1);
 
     do {
         printf("\ndigite o telefone do doador: ");
         fgets(doador.telefone, sizeof(doador.telefone), stdin);
         verificarfilastdin(doador.telefone);
-    } while (verificarTelefone(doador.telefone) == 0);
 
-    printf("\ndigite o valor da doacao: ");
-    scanf("%lf", &doador.valor_doacao);
-    apagarfila();
+        if (strcmp(doador.telefone, "cancel\n") == 0) {
+            printf("Cadastro cancelado pelo usuario.\n");
+            return;
+        }
+
+        if (verificarTelefone(doador.telefone) == 0) {
+            printf("Telefone invalido!\n");
+            continue;
+        }
+
+        if (telefoneExiste(doador.telefone)) {
+            printf("Este telefone ja esta cadastrado!\n");
+            continue;
+        }
+
+        break; // Telefone valido e nao existe, sai do loop
+    } while (1);
+
+    if (!validarValorDoacao(&doador.valor_doacao)) {
+        printf("Erro ao ler o valor da doacao.\n");
+        return;
+    }
 
     do {
         printf("\ndigite a data da ultima doacao: ");
@@ -57,6 +175,7 @@ void cadastrarUser() {
     }
 
     removerBarraNcsv(&doador);
+
 
     fprintf(fptr, "\"%s\",%s,%s,%0.5lf,%s\n",
             doador.nome,
@@ -214,17 +333,7 @@ void removerUser() {
     }
 }
 
-int processarLinhaCSV(char *linha, Doador *doador) {
-    linha[strcspn(linha, "\n")] = 0;
 
-
-    if (sscanf(linha, "%99[^,],%99[^,],%19[^,],%lf,%10[^,]",
-               doador->nome, doador->email, doador->telefone,
-               &doador->valor_doacao, doador->data_ultima_doacao) != 5) {
-        return 0;
-    }
-    return 1;
-}
 
 int compararDoadores(const void *a, const void *b) {
     Doador *doadorA = (Doador *) a;
@@ -399,3 +508,5 @@ int encontrarDoadorPorEmail(const char *emailBusca, Doador *doadorEncontrado) {
     fclose(fptr);
     return 0;
 }
+
+

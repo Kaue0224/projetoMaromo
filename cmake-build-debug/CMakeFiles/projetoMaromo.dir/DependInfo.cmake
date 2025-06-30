@@ -8,8 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/kaued/CLionProjects/projetoMaromo/main.c" "CMakeFiles/projetoMaromo.dir/main.c.obj" "gcc" "CMakeFiles/projetoMaromo.dir/main.c.obj.d"
-  "C:/Users/kaued/CLionProjects/projetoMaromo/tratamentoentrada.c" "CMakeFiles/projetoMaromo.dir/tratamentoentrada.c.obj" "gcc" "CMakeFiles/projetoMaromo.dir/tratamentoentrada.c.obj.d"
+  "C:/Users/kaued/CLionProjects/projetofinal/projetoMaromo/doador.c" "CMakeFiles/projetoMaromo.dir/doador.c.obj" "gcc" "CMakeFiles/projetoMaromo.dir/doador.c.obj.d"
+  "C:/Users/kaued/CLionProjects/projetofinal/projetoMaromo/main.c" "CMakeFiles/projetoMaromo.dir/main.c.obj" "gcc" "CMakeFiles/projetoMaromo.dir/main.c.obj.d"
+  "C:/Users/kaued/CLionProjects/projetofinal/projetoMaromo/tratamentoentrada.c" "CMakeFiles/projetoMaromo.dir/tratamentoentrada.c.obj" "gcc" "CMakeFiles/projetoMaromo.dir/tratamentoentrada.c.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

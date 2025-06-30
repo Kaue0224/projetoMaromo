@@ -52,10 +52,10 @@ RM = "C:\Program Files\JetBrains\CLion 2024.2.1\bin\cmake\win\x64\bin\cmake.exe"
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\kaued\CLionProjects\projetoMaromo
+CMAKE_SOURCE_DIR = C:\Users\kaued\CLionProjects\projetofinal\projetoMaromo
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\kaued\CLionProjects\projetoMaromo\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\kaued\CLionProjects\projetofinal\projetoMaromo\cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/projetoMaromo.dir/depend.make
@@ -69,48 +69,64 @@ include CMakeFiles/projetoMaromo.dir/progress.make
 include CMakeFiles/projetoMaromo.dir/flags.make
 
 CMakeFiles/projetoMaromo.dir/main.c.obj: CMakeFiles/projetoMaromo.dir/flags.make
-CMakeFiles/projetoMaromo.dir/main.c.obj: C:/Users/kaued/CLionProjects/projetoMaromo/main.c
+CMakeFiles/projetoMaromo.dir/main.c.obj: C:/Users/kaued/CLionProjects/projetofinal/projetoMaromo/main.c
 CMakeFiles/projetoMaromo.dir/main.c.obj: CMakeFiles/projetoMaromo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\kaued\CLionProjects\projetoMaromo\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/projetoMaromo.dir/main.c.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/projetoMaromo.dir/main.c.obj -MF CMakeFiles\projetoMaromo.dir\main.c.obj.d -o CMakeFiles\projetoMaromo.dir\main.c.obj -c C:\Users\kaued\CLionProjects\projetoMaromo\main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\kaued\CLionProjects\projetofinal\projetoMaromo\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/projetoMaromo.dir/main.c.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/projetoMaromo.dir/main.c.obj -MF CMakeFiles\projetoMaromo.dir\main.c.obj.d -o CMakeFiles\projetoMaromo.dir\main.c.obj -c C:\Users\kaued\CLionProjects\projetofinal\projetoMaromo\main.c
 
 CMakeFiles/projetoMaromo.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/projetoMaromo.dir/main.c.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\kaued\CLionProjects\projetoMaromo\main.c > CMakeFiles\projetoMaromo.dir\main.c.i
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\kaued\CLionProjects\projetofinal\projetoMaromo\main.c > CMakeFiles\projetoMaromo.dir\main.c.i
 
 CMakeFiles/projetoMaromo.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/projetoMaromo.dir/main.c.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\kaued\CLionProjects\projetoMaromo\main.c -o CMakeFiles\projetoMaromo.dir\main.c.s
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\kaued\CLionProjects\projetofinal\projetoMaromo\main.c -o CMakeFiles\projetoMaromo.dir\main.c.s
 
 CMakeFiles/projetoMaromo.dir/tratamentoentrada.c.obj: CMakeFiles/projetoMaromo.dir/flags.make
-CMakeFiles/projetoMaromo.dir/tratamentoentrada.c.obj: C:/Users/kaued/CLionProjects/projetoMaromo/tratamentoentrada.c
+CMakeFiles/projetoMaromo.dir/tratamentoentrada.c.obj: C:/Users/kaued/CLionProjects/projetofinal/projetoMaromo/tratamentoentrada.c
 CMakeFiles/projetoMaromo.dir/tratamentoentrada.c.obj: CMakeFiles/projetoMaromo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\kaued\CLionProjects\projetoMaromo\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/projetoMaromo.dir/tratamentoentrada.c.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/projetoMaromo.dir/tratamentoentrada.c.obj -MF CMakeFiles\projetoMaromo.dir\tratamentoentrada.c.obj.d -o CMakeFiles\projetoMaromo.dir\tratamentoentrada.c.obj -c C:\Users\kaued\CLionProjects\projetoMaromo\tratamentoentrada.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\kaued\CLionProjects\projetofinal\projetoMaromo\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/projetoMaromo.dir/tratamentoentrada.c.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/projetoMaromo.dir/tratamentoentrada.c.obj -MF CMakeFiles\projetoMaromo.dir\tratamentoentrada.c.obj.d -o CMakeFiles\projetoMaromo.dir\tratamentoentrada.c.obj -c C:\Users\kaued\CLionProjects\projetofinal\projetoMaromo\tratamentoentrada.c
 
 CMakeFiles/projetoMaromo.dir/tratamentoentrada.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/projetoMaromo.dir/tratamentoentrada.c.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\kaued\CLionProjects\projetoMaromo\tratamentoentrada.c > CMakeFiles\projetoMaromo.dir\tratamentoentrada.c.i
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\kaued\CLionProjects\projetofinal\projetoMaromo\tratamentoentrada.c > CMakeFiles\projetoMaromo.dir\tratamentoentrada.c.i
 
 CMakeFiles/projetoMaromo.dir/tratamentoentrada.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/projetoMaromo.dir/tratamentoentrada.c.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\kaued\CLionProjects\projetoMaromo\tratamentoentrada.c -o CMakeFiles\projetoMaromo.dir\tratamentoentrada.c.s
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\kaued\CLionProjects\projetofinal\projetoMaromo\tratamentoentrada.c -o CMakeFiles\projetoMaromo.dir\tratamentoentrada.c.s
+
+CMakeFiles/projetoMaromo.dir/doador.c.obj: CMakeFiles/projetoMaromo.dir/flags.make
+CMakeFiles/projetoMaromo.dir/doador.c.obj: C:/Users/kaued/CLionProjects/projetofinal/projetoMaromo/doador.c
+CMakeFiles/projetoMaromo.dir/doador.c.obj: CMakeFiles/projetoMaromo.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\kaued\CLionProjects\projetofinal\projetoMaromo\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/projetoMaromo.dir/doador.c.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/projetoMaromo.dir/doador.c.obj -MF CMakeFiles\projetoMaromo.dir\doador.c.obj.d -o CMakeFiles\projetoMaromo.dir\doador.c.obj -c C:\Users\kaued\CLionProjects\projetofinal\projetoMaromo\doador.c
+
+CMakeFiles/projetoMaromo.dir/doador.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/projetoMaromo.dir/doador.c.i"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\kaued\CLionProjects\projetofinal\projetoMaromo\doador.c > CMakeFiles\projetoMaromo.dir\doador.c.i
+
+CMakeFiles/projetoMaromo.dir/doador.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/projetoMaromo.dir/doador.c.s"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\kaued\CLionProjects\projetofinal\projetoMaromo\doador.c -o CMakeFiles\projetoMaromo.dir\doador.c.s
 
 # Object files for target projetoMaromo
 projetoMaromo_OBJECTS = \
 "CMakeFiles/projetoMaromo.dir/main.c.obj" \
-"CMakeFiles/projetoMaromo.dir/tratamentoentrada.c.obj"
+"CMakeFiles/projetoMaromo.dir/tratamentoentrada.c.obj" \
+"CMakeFiles/projetoMaromo.dir/doador.c.obj"
 
 # External object files for target projetoMaromo
 projetoMaromo_EXTERNAL_OBJECTS =
 
 projetoMaromo.exe: CMakeFiles/projetoMaromo.dir/main.c.obj
 projetoMaromo.exe: CMakeFiles/projetoMaromo.dir/tratamentoentrada.c.obj
+projetoMaromo.exe: CMakeFiles/projetoMaromo.dir/doador.c.obj
 projetoMaromo.exe: CMakeFiles/projetoMaromo.dir/build.make
 projetoMaromo.exe: CMakeFiles/projetoMaromo.dir/linkLibs.rsp
 projetoMaromo.exe: CMakeFiles/projetoMaromo.dir/objects1.rsp
 projetoMaromo.exe: CMakeFiles/projetoMaromo.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\kaued\CLionProjects\projetoMaromo\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable projetoMaromo.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\kaued\CLionProjects\projetofinal\projetoMaromo\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable projetoMaromo.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\projetoMaromo.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -122,6 +138,6 @@ CMakeFiles/projetoMaromo.dir/clean:
 .PHONY : CMakeFiles/projetoMaromo.dir/clean
 
 CMakeFiles/projetoMaromo.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\kaued\CLionProjects\projetoMaromo C:\Users\kaued\CLionProjects\projetoMaromo C:\Users\kaued\CLionProjects\projetoMaromo\cmake-build-debug C:\Users\kaued\CLionProjects\projetoMaromo\cmake-build-debug C:\Users\kaued\CLionProjects\projetoMaromo\cmake-build-debug\CMakeFiles\projetoMaromo.dir\DependInfo.cmake "--color=$(COLOR)"
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\kaued\CLionProjects\projetofinal\projetoMaromo C:\Users\kaued\CLionProjects\projetofinal\projetoMaromo C:\Users\kaued\CLionProjects\projetofinal\projetoMaromo\cmake-build-debug C:\Users\kaued\CLionProjects\projetofinal\projetoMaromo\cmake-build-debug C:\Users\kaued\CLionProjects\projetofinal\projetoMaromo\cmake-build-debug\CMakeFiles\projetoMaromo.dir\DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/projetoMaromo.dir/depend
 

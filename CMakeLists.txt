@@ -7,4 +7,5 @@ add_executable(projetoMaromo main.c
         tratamentoentrada.h
         tratamentoentrada.c
         cadastrarDoador.h
+        doador.c
 )
