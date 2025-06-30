@@ -202,7 +202,9 @@ void pesquisarUser() {
     limparTela();
     printf("--- PESQUISA DE DOADOR POR E-MAIL ---\n");
     printf("Digite o email para pesquisa: ");
+    if(strcmp(emailBusca,"cancel\n") == 0)return;
     fgets(emailBusca, sizeof(emailBusca), stdin);
+
     emailBusca[strcspn(emailBusca, "\n")] = '\0';
 
     // Chama a "ferramenta" para fazer o trabalho pesado
@@ -226,6 +228,7 @@ void removerUser() {
     printf("Digite o email do doador a remover: ");
     fgets(emailBusca, sizeof(emailBusca), stdin);
     verificarfilastdin(emailBusca);
+    if(strcmp(emailBusca,"cancel\n") == 0)return;
     emailBusca[strcspn(emailBusca, "\n")] = '\0'; // Remove \n
 
     FILE *fptr = fopen("doadores.csv", "r");
@@ -508,5 +511,3 @@ int encontrarDoadorPorEmail(const char *emailBusca, Doador *doadorEncontrado) {
     fclose(fptr);
     return 0;
 }
-
-

@@ -4,9 +4,12 @@
 #include "tratamentoentrada.h"
 
 void limparTela() {
-    for (int i = 0; i < 100; i++) {
-        printf("\n");
-    }
+    // Limpa a tela
+  #ifdef _WIN32
+    system("cls");
+  #else
+    system("clear");
+  #endif
 }
 
 void apagarfila() {

@@ -23,6 +23,8 @@
 // A função main é o ponto de entrada de qualquer programa em C.
 // A execução sempre começa aqui.
 int main() {
+    limparTela();
+
     // Declara um array de caracteres (uma string) para armazenar a opção
     // que o usuário digitará no menu.
     char opcaoUsuario[10];
@@ -64,26 +66,31 @@ int main() {
 
             case '1': // Se o primeiro caractere for '1'
                 printf(">> Chamando funcao: Cadastrar Doador\n");
+                limparTela();
                 cadastrarUser(); // Chama a função que realiza o cadastro
                 break; // 'break' é essencial para sair do switch e não "cair" no próximo case.
 
             case '2': // Se o primeiro caractere for '2'
                 printf(">> Chamando funcao: Consultar Doadores\n");
+                limparTela();
                 pesquisarUser(); // Chama a função que realiza a pesquisa
                 break;
 
             case '3': // Se o primeiro caractere for '3'
                 printf(">> Chamando funcao: Atualizar Informacoes\n");
+                limparTela();
                 atualizarInformacoes(); // Chama a função que realiza a atualização
                 break;
 
             case '4': // Se o primeiro caractere for '4'
                 printf(">> Chamando funcao: Top 10 Doadores\n");
+                limparTela();
                 listarTopDoadores(); // Chama a função que gera o ranking
                 break;
 
             case '5': // Se o primeiro caractere for '5'
                 printf(">> Chamando funcao: Remover Doador\n");
+                limparTela();
                 removerUser(); // Chama a função que realiza a remoção
                 break;
 
